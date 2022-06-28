@@ -42,15 +42,15 @@ const (
 )
 
 type Product struct {
-	Id     string  `valid:"uuid"`
+	ID     string  `valid:"uuid"`
 	Name   string  `valid:"required"`
 	Price  float64 `valid:"float,optional"`
 	Status string  `valid:"required"`
 }
 
-func NewProduct() **Product {
-	product := &Product{
-		Id:     uuid.NewV4().String(),
+func NewProduct() *Product {
+	product := Product{
+		ID:     uuid.NewV4().String(),
 		Status: DISABLED,
 	}
 	return &product
@@ -98,7 +98,7 @@ func (p *Product) Disable() error {
 }
 
 func (p *Product) GetId() string {
-	return p.Id
+	return p.ID
 }
 
 func (p *Product) GetName() string {
