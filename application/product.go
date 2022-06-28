@@ -6,34 +6,38 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func init() {
+	govalidator.SetFieldsRequiredByDefault(true)
+}
+
 type ProductInterface interface {
 	IsValid() (bool, error)
 	Enable() error
 	Disable() error
-	GetId() string
+	GetID() string
 	GetName() string
 	GetStatus() string
 	GetPrice() float64
 }
 
 type ProductServiceInterface interface {
-	Create(name string, price float64) (ProductInterface, error)
 	Get(id string) (ProductInterface, error)
+	Create(name string, price float64) (ProductInterface, error)
 	Enable(product ProductInterface) (ProductInterface, error)
 	Disable(product ProductInterface) (ProductInterface, error)
 }
 
-type ProductReaderInterface interface {
+type ProductReader interface {
 	Get(id string) (ProductInterface, error)
 }
 
-type ProductWriterInterface interface {
+type ProductWriter interface {
 	Save(product ProductInterface) (ProductInterface, error)
 }
 
 type ProductPersistenceInterface interface {
-	ProductReaderInterface
-	ProductWriterInterface
+	ProductReader
+	ProductWriter
 }
 
 const (
@@ -42,7 +46,7 @@ const (
 )
 
 type Product struct {
-	ID     string  `valid:"uuid"`
+	ID     string  `valid:"uuidv4"`
 	Name   string  `valid:"required"`
 	Price  float64 `valid:"float,optional"`
 	Status string  `valid:"required"`
@@ -56,28 +60,23 @@ func NewProduct() *Product {
 	return &product
 }
 
-func init() {
-	govalidator.SetFieldsRequiredByDefault(true)
-}
-
 func (p *Product) IsValid() (bool, error) {
 	if p.Status == "" {
 		p.Status = DISABLED
 	}
 
-	if p.Status != DISABLED && p.Status != ENABLED {
+	if p.Status != ENABLED && p.Status != DISABLED {
 		return false, errors.New("the status must be enabled or disabled")
 	}
 
 	if p.Price < 0 {
-		return false, errors.New("the price must be equal zero")
+		return false, errors.New("the price must be greater or equal zero")
 	}
 
 	_, err := govalidator.ValidateStruct(p)
 	if err != nil {
 		return false, err
 	}
-
 	return true, nil
 }
 
@@ -97,7 +96,7 @@ func (p *Product) Disable() error {
 	return errors.New("the price must be zero in order to have the product disabled")
 }
 
-func (p *Product) GetId() string {
+func (p *Product) GetID() string {
 	return p.ID
 }
 

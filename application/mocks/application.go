@@ -62,18 +62,18 @@ func (mr *MockProductInterfaceMockRecorder) Enable() *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Enable", reflect.TypeOf((*MockProductInterface)(nil).Enable))
 }
 
-// GetId mocks base method.
-func (m *MockProductInterface) GetId() string {
+// GetID mocks base method.
+func (m *MockProductInterface) GetID() string {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetId")
+	ret := m.ctrl.Call(m, "GetID")
 	ret0, _ := ret[0].(string)
 	return ret0
 }
 
-// GetId indicates an expected call of GetId.
-func (mr *MockProductInterfaceMockRecorder) GetId() *gomock.Call {
+// GetID indicates an expected call of GetID.
+func (mr *MockProductInterfaceMockRecorder) GetID() *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetId", reflect.TypeOf((*MockProductInterface)(nil).GetId))
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetID", reflect.TypeOf((*MockProductInterface)(nil).GetID))
 }
 
 // GetName mocks base method.
@@ -216,31 +216,31 @@ func (mr *MockProductServiceInterfaceMockRecorder) Get(id interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockProductServiceInterface)(nil).Get), id)
 }
 
-// MockProductReaderInterface is a mock of ProductReaderInterface interface.
-type MockProductReaderInterface struct {
+// MockProductReader is a mock of ProductReader interface.
+type MockProductReader struct {
 	ctrl     *gomock.Controller
-	recorder *MockProductReaderInterfaceMockRecorder
+	recorder *MockProductReaderMockRecorder
 }
 
-// MockProductReaderInterfaceMockRecorder is the mock recorder for MockProductReaderInterface.
-type MockProductReaderInterfaceMockRecorder struct {
-	mock *MockProductReaderInterface
+// MockProductReaderMockRecorder is the mock recorder for MockProductReader.
+type MockProductReaderMockRecorder struct {
+	mock *MockProductReader
 }
 
-// NewMockProductReaderInterface creates a new mock instance.
-func NewMockProductReaderInterface(ctrl *gomock.Controller) *MockProductReaderInterface {
-	mock := &MockProductReaderInterface{ctrl: ctrl}
-	mock.recorder = &MockProductReaderInterfaceMockRecorder{mock}
+// NewMockProductReader creates a new mock instance.
+func NewMockProductReader(ctrl *gomock.Controller) *MockProductReader {
+	mock := &MockProductReader{ctrl: ctrl}
+	mock.recorder = &MockProductReaderMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockProductReaderInterface) EXPECT() *MockProductReaderInterfaceMockRecorder {
+func (m *MockProductReader) EXPECT() *MockProductReaderMockRecorder {
 	return m.recorder
 }
 
 // Get mocks base method.
-func (m *MockProductReaderInterface) Get(id string) (application.ProductInterface, error) {
+func (m *MockProductReader) Get(id string) (application.ProductInterface, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Get", id)
 	ret0, _ := ret[0].(application.ProductInterface)
@@ -249,36 +249,36 @@ func (m *MockProductReaderInterface) Get(id string) (application.ProductInterfac
 }
 
 // Get indicates an expected call of Get.
-func (mr *MockProductReaderInterfaceMockRecorder) Get(id interface{}) *gomock.Call {
+func (mr *MockProductReaderMockRecorder) Get(id interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockProductReaderInterface)(nil).Get), id)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockProductReader)(nil).Get), id)
 }
 
-// MockProductWriterInterface is a mock of ProductWriterInterface interface.
-type MockProductWriterInterface struct {
+// MockProductWriter is a mock of ProductWriter interface.
+type MockProductWriter struct {
 	ctrl     *gomock.Controller
-	recorder *MockProductWriterInterfaceMockRecorder
+	recorder *MockProductWriterMockRecorder
 }
 
-// MockProductWriterInterfaceMockRecorder is the mock recorder for MockProductWriterInterface.
-type MockProductWriterInterfaceMockRecorder struct {
-	mock *MockProductWriterInterface
+// MockProductWriterMockRecorder is the mock recorder for MockProductWriter.
+type MockProductWriterMockRecorder struct {
+	mock *MockProductWriter
 }
 
-// NewMockProductWriterInterface creates a new mock instance.
-func NewMockProductWriterInterface(ctrl *gomock.Controller) *MockProductWriterInterface {
-	mock := &MockProductWriterInterface{ctrl: ctrl}
-	mock.recorder = &MockProductWriterInterfaceMockRecorder{mock}
+// NewMockProductWriter creates a new mock instance.
+func NewMockProductWriter(ctrl *gomock.Controller) *MockProductWriter {
+	mock := &MockProductWriter{ctrl: ctrl}
+	mock.recorder = &MockProductWriterMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use.
-func (m *MockProductWriterInterface) EXPECT() *MockProductWriterInterfaceMockRecorder {
+func (m *MockProductWriter) EXPECT() *MockProductWriterMockRecorder {
 	return m.recorder
 }
 
 // Save mocks base method.
-func (m *MockProductWriterInterface) Save(product application.ProductInterface) (application.ProductInterface, error) {
+func (m *MockProductWriter) Save(product application.ProductInterface) (application.ProductInterface, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Save", product)
 	ret0, _ := ret[0].(application.ProductInterface)
@@ -287,9 +287,9 @@ func (m *MockProductWriterInterface) Save(product application.ProductInterface) 
 }
 
 // Save indicates an expected call of Save.
-func (mr *MockProductWriterInterfaceMockRecorder) Save(product interface{}) *gomock.Call {
+func (mr *MockProductWriterMockRecorder) Save(product interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockProductWriterInterface)(nil).Save), product)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockProductWriter)(nil).Save), product)
 }
 
 // MockProductPersistenceInterface is a mock of ProductPersistenceInterface interface.

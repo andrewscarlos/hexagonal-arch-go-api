@@ -38,7 +38,7 @@ func TestProduct_Disable(t *testing.T) {
 func TestProduct_IsValid(t *testing.T) {
 	product := application.Product{}
 	product.ID = uuid.NewV4().String()
-	product.Name = "Hello"
+	product.Name = "hello"
 	product.Status = application.DISABLED
 	product.Price = 10
 
@@ -55,5 +55,5 @@ func TestProduct_IsValid(t *testing.T) {
 
 	product.Price = -10
 	_, err = product.IsValid()
-	require.Equal(t, "the price must be equal zero", err.Error())
+	require.Equal(t, "the price must be greater or equal zero", err.Error())
 }
